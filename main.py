@@ -1,31 +1,22 @@
 import callAPI
 import json
-import LatLonSelect
+import weather_parser
 
-statusCode,oridinates = callAPI.coordinates()
+City = str(input("Enter City Name: "))
+statusCode,oridinates = callAPI.coordinates(City)
 json_ordinates = json.loads(oridinates)
-outList = []
-for i in range(len(json_ordinates)):
-    innerList = []
-    City = json_ordinates[i]["name"]
-    Lat = json_ordinates[i]["lat"]
-    Lon = json_ordinates[i]["lon"]
-    Country = json_ordinates[i]["country"]
-    State = json_ordinates[i]["state"]
-    innerList.append(City)
-    innerList.append(Lat)
-    innerList.append(Lon)
-    innerList.append(Country)
-    innerList.append(State)
-    outList.append(innerList)
-
-print(outList)
-# user_Input = LatLonSelect.lat_lon(outList)
-
-
-
-
-
-
-
-
+outList = weather_parser.parse_cities(json_ordinates)
+found_cities_num = (len(outList))
+# print((outList))
+if found_cities_num == 1:
+    #call func weather
+    lan = outList[0][1]
+    lon = outList[0][2]
+    # print(lan,lon)
+    status_code,weather = callAPI.weather(lan,lon)
+    print(weather)
+    #call func parse_weather
+elif found_cities_num > 1:
+    pass
+    #user input 
+    #call func weather

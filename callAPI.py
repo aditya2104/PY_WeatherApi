@@ -1,8 +1,7 @@
 import keys
 import requests
 
-def coordinates():
-    City = str(input("Enter City Name: "))
+def coordinates(City):
     geoendpoint = keys.GeoEndPoint+City+"&limit=5&appid="+keys.API
     response = requests.get(geoendpoint)
     statusCode = response.status_code
@@ -10,8 +9,12 @@ def coordinates():
     return statusCode,response_json
    
 
-def weather():
-    pass
+def weather(lat,lon):
+    weather = keys.WeatherEndpoint+str(lat)+"&lon="+str(lon)+"&appid="+keys.API
+    response = requests.get(weather)
+    statusCode = requests.status_codes
+    response_json = response.text
+    return statusCode,response_json
 
 
 

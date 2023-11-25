@@ -1,4 +1,4 @@
-def lat_lon(cities):
+def parse_cities(cities):
     outerList = []
     for i in range(len(cities)):
         innerList = []
@@ -12,4 +12,8 @@ def lat_lon(cities):
         innerList.append(Lon)
         innerList.append(Country)
         innerList.append(State)
-    print(outerList.append(innerList))
+        outerList.append(innerList)
+    return outerList
+
+def select_coordinates():
+    pass
