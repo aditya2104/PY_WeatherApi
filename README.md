@@ -1,6 +1,6 @@
 # PY_WeatherApi
 
-Real time weather condions are returned. 
+Real time weather conditions are returned. 
 Calls OpenWeather API to get real time weather conditions of a city. 
 
 User Input - City Name
